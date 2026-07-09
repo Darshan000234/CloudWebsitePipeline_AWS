@@ -1,0 +1,23 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 18
+
+    commands:
+      - echo "Installing HTMLHint..."
+      - npm install -g htmlhint
+
+  pre_build:
+    commands:
+      - echo "Checking HTML files..."
+      - htmlhint "**/*.html"
+
+  build:
+    commands:
+      - echo "HTML validation successful."
+
+artifacts:
+  files:
+    - '**/*'
